@@ -88,8 +88,10 @@ if st.session_state.laps:
     for lap in reversed(st.session_state.laps):
         st.write(f"Круг {lap['lap']}: `{lap['time']}` | Всего: `{lap['total']}`")
 
-# Note: For cloud deployment, real-time updates work differently
-# The app will refresh when buttons are pressed
+# Auto-refresh every 0.1 seconds to update the timer in real-time
+if st.session_state.is_running:
+    time.sleep(0.1)
+    st.experimental_rerun()
 
 # Show instructions
 st.markdown("---")
