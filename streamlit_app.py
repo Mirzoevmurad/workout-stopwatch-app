@@ -41,7 +41,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-st.title("⏱️ Часы для тренера")
+st.title("ГБУ ДО РД СШ 'САМУР'⏱️ Секундамер")
 st.markdown("*Идеально подходят для отслеживания тренировочных сессий*")
 
 # Display the current elapsed time
