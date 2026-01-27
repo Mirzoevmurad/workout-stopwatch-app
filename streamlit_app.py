@@ -14,6 +14,10 @@ if 'laps' not in st.session_state:
 if 'last_lap_time' not in st.session_state:
     st.session_state.last_lap_time = 0
 
+# Function to force refresh the page for real-time updates
+def refresh():
+    st.experimental_rerun()
+
 def format_time(seconds):
     """Format seconds to HH:MM:SS format"""
     hours = int(seconds // 3600)
@@ -30,8 +34,15 @@ def format_time_ms(seconds):
     return f"{hours:02d}:{minutes:02d}:{secs:02d}.{ms:02d}"
 
 # Streamlit app title
-st.title("💪 Секундомер для тренировок")
-st.markdown("*Идеально подходит для отслеживания ваших тренировочных сессий*")
+st.set_page_config(
+    page_title="Часы для тренера",
+    page_icon="⏱️",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
+
+st.title("⏱️ Часы для тренера")
+st.markdown("*Идеально подходят для отслеживания тренировочных сессий*")
 
 # Display the current elapsed time
 time_display = st.empty()
@@ -88,10 +99,35 @@ if st.session_state.laps:
     for lap in reversed(st.session_state.laps):
         st.write(f"Круг {lap['lap']}: `{lap['time']}` | Всего: `{lap['total']}`")
 
-# Auto-refresh every 0.1 seconds to update the timer in real-time
+# Auto-refresh every 0.1 seconds to update the timer in real-time when running
 if st.session_state.is_running:
     time.sleep(0.1)
-    st.experimental_rerun()
+    st.rerun()
+
+# Mobile-friendly styling
+st.markdown("""
+<style>
+/* Mobile-friendly styles */
+.stButton > button {
+    font-size: 1.2rem;
+    padding: 15px;
+    margin: 5px;
+    min-height: 3rem;
+}
+.subheader {
+    font-size: 2.5rem !important;
+    text-align: center;
+    font-family: monospace;
+}
+/* Larger font for time display */
+div[data-testid="stMarkdownContainer"] h3 {
+    font-size: 3rem;
+    text-align: center;
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # Show instructions
 st.markdown("---")
