@@ -35,7 +35,7 @@ def format_time_ms(seconds):
 
 # Streamlit app title
 st.set_page_config(
-    page_title="Часы для тренера",
+    page_title="ГБУ ДО РД СШ 'САМУР'",
     page_icon="⏱️",
     layout="centered",
     initial_sidebar_state="collapsed"
