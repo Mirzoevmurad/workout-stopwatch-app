@@ -73,6 +73,9 @@ User=${APP_USER}
 Group=${APP_USER}
 WorkingDirectory=${APP_DIR}
 Environment=PYTHONUNBUFFERED=1
+# HOME must point to a writable path so Streamlit can create ~/.streamlit
+# (under ProtectHome=true the real /home/${APP_USER} is hidden from the service).
+Environment=HOME=${APP_DIR}
 ExecStart=${APP_DIR}/.venv/bin/streamlit run ${APP_DIR}/streamlit_app.py \\
     --server.address=${BIND_ADDR} \\
     --server.port=${APP_PORT} \\
