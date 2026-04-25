@@ -28,6 +28,8 @@
    streamlit run streamlit_app.py
    ```
 
+Для развёртывания на собственном VPS (Ubuntu/Debian) — см. [DEPLOYMENT.md](./DEPLOYMENT.md).
+
 ## Использование
 
 1. Нажмите **Старт**, чтобы начать отсчет времени вашей тренировки
