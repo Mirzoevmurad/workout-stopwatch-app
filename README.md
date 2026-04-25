@@ -25,7 +25,7 @@
    ```
 3. Запустите приложение:
    ```bash
-   streamlit run workout_stopwatch.py
+   streamlit run streamlit_app.py
    ```
 
 ## Использование
